@@ -1,6 +1,7 @@
 import pandas as pd
 from random import randint
 import webbrowser as wb
+import os
 
 
 # Check repetition
@@ -32,6 +33,12 @@ def choosing(n, memo_, random_=True):
             return choice_, memo_
 
 
+# Change directory
+cwd = os.getcwd()
+cwd += '\Flashcard Stacks'
+print(f'You are now at {cwd}')
+os.chdir(cwd)
+
 # Initiate the desired stack
 while True:
     end = False
@@ -44,7 +51,7 @@ while True:
         '\n (4) GRE 2 (100-260) '
         '\n (e) Exit'
     )
-    if int(c) in range(5):
+    if c in ['0', '1', '2', '3', '4', 'e']:
         if c == '0':
             df = pd.read_csv('GRETop52.csv')
         elif c == '1':
