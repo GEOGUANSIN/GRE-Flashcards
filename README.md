@@ -1,2 +1,2 @@
 # GRE-Flashcards
-Run main.py to check the flashcards. 
+Download and run main.py to check the flashcards. 
