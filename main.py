@@ -80,8 +80,8 @@ while True and end != True:
                  '\n (1) Random '
                  '\n (2) Index '
                  '\n (e) Exit'
-                 '\n'
                  )
+    print('')
     if mode == '1':
         is_random = True
         break
