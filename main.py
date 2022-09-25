@@ -127,6 +127,7 @@ while True and end != True:
         z = input()
         if z == 'e':
             break
-    print('\n')
+    else:
+        print('\n')
 
 input('Type anything to exit.')
