@@ -36,7 +36,11 @@ def choosing(n, memo_, random_=True):
 # Change directory
 cwd = os.getcwd()
 cwd += '\Flashcard Stacks'
-print(f'You are now at {cwd}')
+print(f'You are now practicing stacks at {cwd}.'
+      '\nType anything to continue if there are no options available.'
+      '\nType e to exit.'
+      '\n'
+      )
 os.chdir(cwd)
 
 # Initiate the desired stack
@@ -49,9 +53,11 @@ while True:
         '\n (2) GRE Kaplan '
         '\n (3) GRE 2 (1-100) '
         '\n (4) GRE 2 (100-260) '
+        '\n (5) GRE 3 (1-125) '
+        '\n (6) GRE 3 (100-260) '
         '\n (e) Exit'
     )
-    if c in ['0', '1', '2', '3', '4', 'e']:
+    if c in ['0', '1', '2', '3', '4', '5', '6', 'e']:
         if c == '0':
             df = pd.read_csv('GRETop52.csv')
         elif c == '1':
@@ -62,6 +68,10 @@ while True:
             df = pd.read_csv('GRE2-1-100.csv')
         elif c == '4':
             df = pd.read_csv('GRE2-100-260.csv')
+        elif c == '5':
+            df = pd.read_csv('GRE3-1-125.csv')
+        elif c == '6':
+            df = pd.read_csv('GRE3-125-260.csv')
         elif c == 'e':
             end = True
             break
@@ -72,13 +82,13 @@ while True:
         print('')
         break
     else:
-        print('There is no such option. Try again.')
+        print('\nThere is no such option. Try again.')
 
 # Initiate the mode
 while True and end != True:
     mode = input('Which mode? '
                  '\n (1) Random '
-                 '\n (2) Index '
+                 '\n (2) By index '
                  '\n (e) Exit'
                  )
     print('')
@@ -106,14 +116,17 @@ while True and end != True:
     word = df.iloc[choice]['Word']
     print('Word:\n', word)
     x = input('Meaning:')
-    if x == 'exit':  # check for exit
+    if x == 'exit' or x == 'e':  # check for exit
         break
     print('', df.iloc[choice]['Meaning'], '\n')
-    y = input('Next? \n (Or type 1 to exit, 2 to search)')  # give choices
-    if y == 'exit' or y == '1':
+    y = input('Next? \n (Or type s to search)')  # give choices
+    if y == 'exit' or y == 'e':
         break
-    if y == '2':
+    if y == 's':
         wb.open_new('https://www.google.com/search?q=meaning+of+' + word)
+        z = input()
+        if z == 'e':
+            break
     print('\n')
 
 input('Type anything to exit.')
